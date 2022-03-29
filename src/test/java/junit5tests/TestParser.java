@@ -20,6 +20,40 @@ public class TestParser {
         assertEquals(new Rational(5), Parser.parse(expr));
     }
 
+    @Test
+    public void testParseSmallScientific() {
+        String expr = "8e-5";
+        assertEquals(new Rational(8, 100000), Parser.parse(expr));
+    }
+
+    @Test
+    public void testParseBigScientific() {
+        String expr = "8e5";
+        assertEquals(new Rational(800000), Parser.parse(expr));
+    }
+
+    @Test
+    public void testParseScientificShortcut() {
+        String expr1 = "8e+5";
+        String expr2 = "8e5";
+        assertEquals(Parser.parse(expr1), Parser.parse(expr2));
+    }
+
+    @Test
+    public void testParseScientificCaseInsensitive() {
+        String expr1 = "8e5";
+        String expr2 = "8E5";
+        assertEquals(Parser.parse(expr1), Parser.parse(expr2));
+    }
+
+
+    @Test
+    public void testParseDecimalScientific() {
+        String expr = "8.2e3";
+        assertEquals(new Rational(8200), Parser.parse(expr));
+    }
+
+
     /*
     @Test
     public void testParseDecimal() {

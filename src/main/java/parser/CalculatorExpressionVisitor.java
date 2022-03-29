@@ -1,4 +1,4 @@
-// Generated from /home/thomas/Documents/Projects/calculator-cucumber/src/main/resources/CalculatorExpression.g4 by ANTLR 4.9.2
+// Generated from /home/thomas/Desktop/calc/src/main/resources/CalculatorExpression.g4 by ANTLR 4.9.2
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -40,6 +40,12 @@ public interface CalculatorExpressionVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValue(CalculatorExpressionParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CalculatorExpressionParser#scientific_number}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScientific_number(CalculatorExpressionParser.Scientific_numberContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CalculatorExpressionParser#number}.
 	 * @param ctx the parse tree

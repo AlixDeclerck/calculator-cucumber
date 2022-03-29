@@ -1,4 +1,4 @@
-// Generated from /home/thomas/Documents/Projects/calculator-cucumber/src/main/resources/CalculatorExpression.g4 by ANTLR 4.9.2
+// Generated from /home/thomas/Desktop/calc/src/main/resources/CalculatorExpression.g4 by ANTLR 4.9.2
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -57,6 +57,16 @@ public interface CalculatorExpressionListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValue(CalculatorExpressionParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculatorExpressionParser#scientific_number}.
+	 * @param ctx the parse tree
+	 */
+	void enterScientific_number(CalculatorExpressionParser.Scientific_numberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculatorExpressionParser#scientific_number}.
+	 * @param ctx the parse tree
+	 */
+	void exitScientific_number(CalculatorExpressionParser.Scientific_numberContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CalculatorExpressionParser#number}.
 	 * @param ctx the parse tree

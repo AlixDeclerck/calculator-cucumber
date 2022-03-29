@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.*;
 import parser.CalculatorExpressionParser;
 import parser.CalculatorExpressionVisitor;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SyntaxTreeVisitor implements CalculatorExpressionVisitor<Expression> {
@@ -76,8 +77,6 @@ public class SyntaxTreeVisitor implements CalculatorExpressionVisitor<Expression
     @Override
     public Expression visitNumber(CalculatorExpressionParser.NumberContext ctx) {
 
-
-
         return switch (ctx.getChildCount()) {
             case 1 -> {
                 // The number is the value of the child.
@@ -87,6 +86,12 @@ public class SyntaxTreeVisitor implements CalculatorExpressionVisitor<Expression
                     case CalculatorExpressionParser.INT -> new Rational(Integer.parseInt(nb.getText()));
                     case CalculatorExpressionParser.DECIMAL -> throw new RuntimeException("Missing implementation for decimal numbers"); // TODO Rational or real
                     case CalculatorExpressionParser.IMAGINARY -> throw new RuntimeException("Missing implementation for imaginary numbers");
+                    case CalculatorExpressionParser.SCIENTIFIC -> {
+                        String val = nb.getText();
+                        var test = val.split("e");
+                        System.out.println(Arrays.toString(test));
+                        yield new Rational(test[0], test[1]);
+                    }
                     default -> throw new InvalidSyntax("Invalid number");
                 };
             }
@@ -98,6 +103,12 @@ public class SyntaxTreeVisitor implements CalculatorExpressionVisitor<Expression
                     case CalculatorExpressionParser.INT -> new Rational(Integer.parseInt(nb.getText())).negate();
                     case CalculatorExpressionParser.DECIMAL -> throw new RuntimeException("Missing implementation for decimal numbers"); // TODO Rational or real
                     case CalculatorExpressionParser.IMAGINARY -> throw new RuntimeException("Missing implementation for imaginary numbers");
+                    case CalculatorExpressionParser.SCIENTIFIC -> {
+                        String val = nb.getText();
+                        var test = val.split("[E]");
+                        System.out.println(Arrays.toString(test));
+                        yield new Rational(test[0], test[1]);
+                    }
                     default -> throw new InvalidSyntax("Invalid number");
                 };
             }

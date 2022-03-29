@@ -1,8 +1,9 @@
 grammar CalculatorExpression;
 
-INT      : [0-9]+;
-DECIMAL  : [0-9]+'.'[0-9]+;
-IMAGINARY: [0-9]+'i';
+INT       : [0-9]+;
+DECIMAL   : [0-9]+'.'[0-9]+;
+SCIENTIFIC: (INT|DECIMAL) ('e'|'E') (PLUS|MINUS)? INT;
+IMAGINARY : [0-9]+'i';
 
 PLUS : '+';
 MINUS: '-';
@@ -27,6 +28,7 @@ value: number
      | parenthesed_expression
      ;
 
-number: MINUS?(INT|DECIMAL|IMAGINARY);
+scientific_number:  (INT|DECIMAL) ('e'|'E') (PLUS|MINUS)? INT;
+number: MINUS?(INT|DECIMAL|IMAGINARY|SCIENTIFIC);
 
 WS : [ \t\r\n]+ -> skip; // ignore whitespaces
