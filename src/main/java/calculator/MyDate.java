@@ -1,51 +1,40 @@
 package calculator;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MyDate extends Number implements Expression{
 
 
-    private Date date;
+    private Calendar date;
 
     /**
      * default constructor with the current date
      */
     public /*constructor*/ MyDate(){
-        date = new Date();
+        date = Calendar.getInstance();
     }
 
-    /**
-     * Create a date with year, month, day, hour, minute and second set in parameters
-     * @param year the years
-     * @param month the months
-     * @param day the days
-     * @param hour the hours
-     * @param minute the minutes
-     * @param second the seconds
-     */
-    public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute, int second){
-        Calendar otherDate = Calendar.getInstance();
-        otherDate.set(year, month, day, hour, minute, second);
+    public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute, int second) {
+        date = Calendar.getInstance();
+        date.set(year, month, day, hour, minute, second);
     }
 
     public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute){
-        Calendar otherDate = Calendar.getInstance();
-        otherDate.set(year, month, day, hour, minute);
+        date = Calendar.getInstance();
+        date.set(year, month, day, hour, minute);
     }
 
-    public /*constructor*/ MyDate(int year, int month, int day){
-        Calendar otherDate = Calendar.getInstance();
-        otherDate.set(year, month, day);
+    public /*constructor*/ MyDate(int year,int month, int day){
+        date = Calendar.getInstance();
+        date.set(year, month, day);
     }
 
-    public /*constructor*/ MyDate(String s) throws ParseException {
+
+    public String toString(){
         DateFormat dateFormat = DateFormat.getInstance();
-        dateFormat.parse(s);
+        return dateFormat.format(date.getTime());
     }
-
 
     //Two MyNumber expressions are equal if the values they contain are equal
     @Override
@@ -66,6 +55,7 @@ public class MyDate extends Number implements Expression{
         }
 
     }
+
 
     // The method hashCode() needs to be overridden if the equals method is overridden; otherwise there may be problems when you use your object in hashed collections such as HashMap, HashSet, LinkedHashSet
     @Override
@@ -97,5 +87,10 @@ public class MyDate extends Number implements Expression{
     @Override
     public Number divide(Number val) {
         return null;
+    }
+
+    public static void main(String[] args){
+        MyDate date = new MyDate();
+        System.out.println(date);
     }
 }
