@@ -8,12 +8,6 @@ public class MyDate extends Number implements Expression{
 
     private final LocalDateTime date;
 
-    /**
-     * default constructor with the current date
-     */
-    public /*constructor*/ MyDate(){
-        date = LocalDateTime.now();
-    }
 
     public /*constructor*/ MyDate(LocalDateTime date){
         this.date = date;
@@ -24,9 +18,7 @@ public class MyDate extends Number implements Expression{
         date = LocalDateTime.of(year, month, day, hour, minute, second);
     }
 
-    public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute){
-        date = LocalDateTime.of(year, month, day, hour, minute);
-    }
+
 
     public /*constructor*/ MyDate(String s){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -37,6 +29,7 @@ public class MyDate extends Number implements Expression{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         return date.format(formatter);
     }
+
 
     //Two MyNumber expressions are equal if the values they contain are equal
     @Override

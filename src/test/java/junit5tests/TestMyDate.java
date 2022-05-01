@@ -107,7 +107,7 @@ public class TestMyDate {
     @Test
     public void testTimeElapsedDays(){
         MyDate startDate = new MyDate("1999/07/31 00:00:00");
-        MyDate endDate = new MyDate();
+        MyDate endDate = new MyDate(LocalDateTime.now());
         assertEquals(startDate.timeElapsedDays(endDate), new Rational(8310));
         assertEquals(endDate.timeElapsedDays(startDate), new Rational(8310));
     }
