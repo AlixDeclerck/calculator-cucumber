@@ -36,7 +36,7 @@ public class TestMyDate {
         MyDate myDate3 = new MyDate(strDate1);
         assertNotEquals(myDate3,myDate2);
         assertEquals(myDate2, myDate2); // Identity check (for coverage, as this should always be true)
-        MyDate myDate4 = new MyDate(1970, 7, 30, 14, 15);
+        MyDate myDate4 = new MyDate(1970, 7, 30, 14, 15, 00);
         assertNotEquals(myDate3, myDate4);
     }
 
