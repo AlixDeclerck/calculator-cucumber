@@ -1,41 +1,41 @@
 package calculator;
 
-import java.text.DateFormat;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MyDate extends Number implements Expression{
 
-
-    private Calendar date;
+    private LocalDateTime date;
 
     /**
      * default constructor with the current date
      */
     public /*constructor*/ MyDate(){
-        date = Calendar.getInstance();
+        date = LocalDateTime.now();
     }
 
     public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute, int second) {
-        date = Calendar.getInstance();
-        date.set(year, month, day, hour, minute, second);
+        super();
+        date = LocalDateTime.of(year, month, day, hour, minute, second);
     }
 
     public /*constructor*/ MyDate(int year, int month, int day, int hour, int minute){
-        date = Calendar.getInstance();
-        date.set(year, month, day, hour, minute);
+        date = LocalDateTime.of(year, month, day, hour, minute);
     }
 
-    public /*constructor*/ MyDate(int year,int month, int day){
-        date = Calendar.getInstance();
-        date.set(year, month, day);
+    public /*constructor*/ MyDate(String s){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        date = LocalDateTime.parse(s,formatter);
     }
-
 
     public String toString(){
-        DateFormat dateFormat = DateFormat.getInstance();
-        return dateFormat.format(date.getTime());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        return date.format(formatter);
     }
 
+    public LocalDateTime getDate(){
+        return date;
+    }
     //Two MyNumber expressions are equal if the values they contain are equal
     @Override
     public boolean equals(Object o) {
@@ -89,8 +89,4 @@ public class MyDate extends Number implements Expression{
         return null;
     }
 
-    public static void main(String[] args){
-        MyDate date = new MyDate();
-        System.out.println(date);
-    }
 }
