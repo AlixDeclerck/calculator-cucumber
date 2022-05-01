@@ -35,4 +35,25 @@ public abstract class Number implements Expression
 
     public abstract Number divide(Number val);
 
+    public abstract MyDate addDays(long day);
+    public abstract MyDate addHours(long hour);
+    public abstract MyDate addMinutes(long min);
+    public abstract MyDate addSeconds(long sec);
+    public abstract MyDate substractDays(long day);
+    public abstract MyDate substractHours(long hour);
+    public abstract MyDate subtractMinutes(long min);
+    public abstract MyDate substractSeconds(long sec);
+    public abstract Number timeElapsedDays(MyDate endDate);
+    public  abstract Number timeElapsedHours(MyDate endDate);
+    public  abstract Number timeElapsedMinutes(MyDate endDate);
+    public abstract Number timeElapsedSeconds(MyDate endDate);
+
+
+
+
+
+
+
+
+
 }

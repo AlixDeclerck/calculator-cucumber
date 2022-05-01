@@ -102,6 +102,66 @@ public class Rational extends Number implements Expression, Comparable<Rational>
     }
 
     @Override
+    public MyDate addDays(long day) {
+        return null;
+    }
+
+    @Override
+    public MyDate addHours(long hour) {
+        return null;
+    }
+
+    @Override
+    public MyDate addMinutes(long min) {
+        return null;
+    }
+
+    @Override
+    public MyDate addSeconds(long sec) {
+        return null;
+    }
+
+    @Override
+    public MyDate substractDays(long day) {
+        return null;
+    }
+
+    @Override
+    public MyDate substractHours(long hour) {
+        return null;
+    }
+
+    @Override
+    public MyDate subtractMinutes(long min) {
+        return null;
+    }
+
+    @Override
+    public MyDate substractSeconds(long sec) {
+        return null;
+    }
+
+    @Override
+    public Number timeElapsedDays(MyDate endDate) {
+        return null;
+    }
+
+    @Override
+    public Number timeElapsedHours(MyDate endDate) {
+        return null;
+    }
+
+    @Override
+    public Number timeElapsedMinutes(MyDate endDate) {
+        return null;
+    }
+
+    @Override
+    public Number timeElapsedSeconds(MyDate endDate) {
+        return null;
+    }
+
+    @Override
     public String toString() {
         String representation = numerator.toString();
         if (!denominator.equals(BigInteger.ONE)) {
